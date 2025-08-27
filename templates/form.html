@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Attendance Form</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  {% include 'navbar.html' %}
+  {% include 'sidebar.html' %}
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="form-container">
+      <h2>Attendance Form</h2>
+      
+      {% if error %}
+        <div class="alert alert-danger">{{ error }}</div>
+      {% endif %}
+      {% if success %}
+        <div class="alert alert-success">{{ success }}</div>
+      {% endif %}
+
+      <form action="/form" method="post" class="row g-3">
+        <!-- Row 1 -->
+        <div class="form-group col-md-6">
+          <label for="totaldays">Total Days</label>
+          <input type="number" id="totaldays" name="totaldays" class="form-control" placeholder="Enter Total Days" required>
+        </div>
+
+        <div class="form-group col-md-6">
+          <label for="totalpresent">Total Present</label>
+          <input type="number" id="totalpresent" name="totalpresent" class="form-control" placeholder="Enter Total Present" required>
+        </div>
+
+        <!-- Row 2 -->
+        <div class="form-group col-md-6">
+          <label for="total_leave">Total Leave</label>
+          <input type="number" id="total_leave" name="total_leave" class="form-control" placeholder="Enter Total Leave" required>
+        </div>
+
+        <div class="form-group col-md-6">
+          <label for="late_in">Late In</label>
+          <input type="number" id="late_in" name="late_in" class="form-control" placeholder="Enter Late In" required>
+        </div>
+
+        <!-- Row 3 -->
+        <div class="form-group col-md-6">
+          <label for="early_out">Early Out</label>
+          <input type="number" id="early_out" name="early_out" class="form-control" placeholder="Enter Early Out" required>
+        </div>
+
+        <div class="form-group col-md-6">
+          <label for="late_out">Late Out</label>
+          <input type="number" id="late_out" name="late_out" class="form-control" placeholder="Enter Late Out" required>
+        </div>
+
+        <!-- Row 4 -->
+        <div class="form-group col-md-6">
+          <label for="early_in">Early In</label>
+          <input type="number" id="early_in" name="early_in" class="form-control" placeholder="Enter Early In" required>
+        </div>
+
+        <div class="form-group col-md-6">
+          <label for="el_on_hands">EL on Hands</label>
+          <input type="number" id="el_on_hands" name="el_on_hands" class="form-control" placeholder="Enter EL On Hands" required>
+        </div>
+
+        <!-- Row 5 -->
+        <div class="form-group col-md-6">
+          <label for="avy_counting_time">Avg Counting Time</label>
+          <input type="number" id="avy_counting_time" name="avy_counting_time" class="form-control" placeholder="Enter Avg Counting Time" required>
+        </div>
+
+        <div class="form-group col-md-6">
+          <label for="avy_out_time">Avg Out Time</label>
+          <input type="number" id="avy_out_time" name="avy_out_time" class="form-control" placeholder="Enter Avg Out Time" required>
+        </div>
+
+        <!-- Row 6 -->
+        <div class="form-group col-md-6">
+          <label for="cl_on_hands">CL on Hands</label>
+          <input type="number" id="cl_on_hands" name="cl_on_hands" class="form-control" placeholder="Enter CL On Hands" required>
+        </div>
+      </form>
+
+      <!-- Submit -->
+      <div class="form-actions">
+        <button type="submit" class="btn btn-success">Submit</button>
+      </div>
+    </div>
+  </main>
+
+  {% include 'footer.html' %}
+</body>
+</html>
