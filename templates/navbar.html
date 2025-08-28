@@ -3,17 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NavBar</title>
+    <title>Navbar</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-  <nav class="navbar navbar-custom">
-    <div class="container-fluid">
-      <div class="navbar-title">
-        National Highway Authority <span>Islamabad</span>
-      </div>
-    </div>
-  </nav>
+    <!-- Fixed Navbar -->
+    <nav class="navbar navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">
+                    National Highway Authority
+                    <span>Islamabad</span>
+                </a>
+            </div>
+        </div>
+    </nav>
 </body>
 </html>

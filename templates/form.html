@@ -11,87 +11,100 @@
   {% include 'navbar.html' %}
   {% include 'sidebar.html' %}
 
-  <!-- Main Content -->
-  <main class="main-content">
-    <div class="form-container">
-      <h2>Attendance Form</h2>
-      
-      {% if error %}
-        <div class="alert alert-danger">{{ error }}</div>
-      {% endif %}
-      {% if success %}
-        <div class="alert alert-success">{{ success }}</div>
-      {% endif %}
+  <div class="container main-content">
+    <h2 class="text-center">Attendance Form</h2>
+    
+    {% if error %}
+      <div class="alert alert-danger">{{ error }}</div>
+    {% endif %}
+    {% if success %}
+      <div class="alert alert-success">{{ success }}</div>
+    {% endif %}
 
-      <form action="/form" method="post" class="row g-3">
-        <!-- Row 1 -->
-        <div class="form-group col-md-6">
-          <label for="totaldays">Total Days</label>
+    <form action="/form" method="post" class="form-horizontal">
+      
+      <!-- Row 1 -->
+      <div class="form-group">
+        <label for="totaldays" class="col-sm-2 control-label">Total Days</label>
+        <div class="col-sm-4">
           <input type="number" id="totaldays" name="totaldays" class="form-control" placeholder="Enter Total Days" required>
         </div>
 
-        <div class="form-group col-md-6">
-          <label for="totalpresent">Total Present</label>
+        <label for="totalpresent" class="col-sm-2 control-label">Total Present</label>
+        <div class="col-sm-4">
           <input type="number" id="totalpresent" name="totalpresent" class="form-control" placeholder="Enter Total Present" required>
         </div>
+      </div>
 
-        <!-- Row 2 -->
-        <div class="form-group col-md-6">
-          <label for="total_leave">Total Leave</label>
+      <!-- Row 2 -->
+      <div class="form-group">
+        <label for="total_leave" class="col-sm-2 control-label">Total Leave</label>
+        <div class="col-sm-4">
           <input type="number" id="total_leave" name="total_leave" class="form-control" placeholder="Enter Total Leave" required>
         </div>
 
-        <div class="form-group col-md-6">
-          <label for="late_in">Late In</label>
+        <label for="late_in" class="col-sm-2 control-label">Late In</label>
+        <div class="col-sm-4">
           <input type="number" id="late_in" name="late_in" class="form-control" placeholder="Enter Late In" required>
         </div>
+      </div>
 
-        <!-- Row 3 -->
-        <div class="form-group col-md-6">
-          <label for="early_out">Early Out</label>
+      <!-- Row 3 -->
+      <div class="form-group">
+        <label for="early_out" class="col-sm-2 control-label">Early Out</label>
+        <div class="col-sm-4">
           <input type="number" id="early_out" name="early_out" class="form-control" placeholder="Enter Early Out" required>
         </div>
 
-        <div class="form-group col-md-6">
-          <label for="late_out">Late Out</label>
+        <label for="late_out" class="col-sm-2 control-label">Late Out</label>
+        <div class="col-sm-4">
           <input type="number" id="late_out" name="late_out" class="form-control" placeholder="Enter Late Out" required>
         </div>
+      </div>
 
-        <!-- Row 4 -->
-        <div class="form-group col-md-6">
-          <label for="early_in">Early In</label>
+      <!-- Row 4 -->
+      <div class="form-group">
+        <label for="early_in" class="col-sm-2 control-label">Early In</label>
+        <div class="col-sm-4">
           <input type="number" id="early_in" name="early_in" class="form-control" placeholder="Enter Early In" required>
         </div>
 
-        <div class="form-group col-md-6">
-          <label for="el_on_hands">EL on Hands</label>
+        <label for="el_on_hands" class="col-sm-2 control-label">EL on Hands</label>
+        <div class="col-sm-4">
           <input type="number" id="el_on_hands" name="el_on_hands" class="form-control" placeholder="Enter EL On Hands" required>
         </div>
+      </div>
 
-        <!-- Row 5 -->
-        <div class="form-group col-md-6">
-          <label for="avy_counting_time">Avg Counting Time</label>
+      <!-- Row 5 -->
+      <div class="form-group">
+        <label for="avy_counting_time" class="col-sm-2 control-label">Avg Counting Time</label>
+        <div class="col-sm-4">
           <input type="number" id="avy_counting_time" name="avy_counting_time" class="form-control" placeholder="Enter Avg Counting Time" required>
         </div>
 
-        <div class="form-group col-md-6">
-          <label for="avy_out_time">Avg Out Time</label>
+        <label for="avy_out_time" class="col-sm-2 control-label">Avg Out Time</label>
+        <div class="col-sm-4">
           <input type="number" id="avy_out_time" name="avy_out_time" class="form-control" placeholder="Enter Avg Out Time" required>
         </div>
+      </div>
 
-        <!-- Row 6 -->
-        <div class="form-group col-md-6">
-          <label for="cl_on_hands">CL on Hands</label>
+      <!-- Row 6 -->
+      <div class="form-group">
+        <label for="cl_on_hands" class="col-sm-2 control-label">CL on Hands</label>
+        <div class="col-sm-4">
           <input type="number" id="cl_on_hands" name="cl_on_hands" class="form-control" placeholder="Enter CL On Hands" required>
         </div>
-      </form>
-
-      <!-- Submit -->
-      <div class="form-actions">
-        <button type="submit" class="btn btn-success">Submit</button>
       </div>
-    </div>
-  </main>
+
+      <!-- Submit Button -->
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <button type="submit" class="btn btn-success">Submit</button>
+        </div>
+      </div>
+
+    </form>
+  </div>
 
   {% include 'footer.html' %}
 </body>

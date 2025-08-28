@@ -14,31 +14,31 @@
    {% include 'navbar.html' %}
    {% include 'sidebar.html' %}
 
-  <div class="container py-4">
+  <div class="container mt-4">
     <!-- Cards Section -->
     <div class="row g-4">
       {% for record in records %}
         <!-- 1. Total Days -->
         <div class="col-lg-3 col-md-4 col-sm-6">
-          <div class="card1 shadow-sm text-center p-3">
+          <div class="card shadow-sm text-center p-3 card-color-1">
             <div class="card-body">
               <i class="bi bi-calendar-check icon"></i>
               <h6>Total Days</h6>
-              <h4 class="text-primary">{{ record.total_days }}</h4>
+              <h4>{{ record.total_days if record.total_days is not none else '--' }}</h4>
             </div>
           </div>
         </div>
 
         <!-- 2. Present / Leave -->
         <div class="col-lg-3 col-md-4 col-sm-6">
-          <div class="card2 shadow-sm text-center p-3">
+          <div class="card shadow-sm text-center p-3 card-color-2">
             <div class="card-body">
-              <i class="bi bi-people-fill icon text-success"></i>
+              <i class="bi bi-people-fill icon"></i>
               <h6>Present / Leave</h6>
               <div class="d-flex justify-content-center align-items-center mt-2">
-                <h4 class="text-success me-2">{{ record.total_presents }}</h4>
+                <h4 class="me-2">{{ record.total_presents if record.total_presents is not none else '--' }}</h4>
                 <span class="fs-4">/</span>
-                <h4 class="text-danger ms-2">{{ record.total_leaves }}</h4>
+                <h4 class="ms-2">{{ record.total_leaves if record.total_leaves is not none else '--' }}</h4>
               </div>
             </div>
           </div>
@@ -46,14 +46,14 @@
 
         <!-- 3. Late In / Early Out -->
         <div class="col-lg-3 col-md-4 col-sm-6">
-          <div class="card3 shadow-sm text-center p-3">
+          <div class="card shadow-sm text-center p-3 card-color-3">
             <div class="card-body">
-              <i class="bi bi-clock-history icon text-warning"></i>
+              <i class="bi bi-clock-history icon"></i>
               <h6>Late In / Early Out</h6>
               <div class="d-flex justify-content-center align-items-center mt-2">
-                <h4 class="text-warning me-2">{{ record.late_in }}</h4>
+                <h4 class="me-2">{{ record.late_in if record.late_in is not none else '--' }}</h4>
                 <span class="fs-4">/</span>
-                <h4 class="text-info ms-2">{{ record.early_out }}</h4>
+                <h4 class="ms-2">{{ record.early_out if record.early_out is not none else '--' }}</h4>
               </div>
             </div>
           </div>
@@ -61,14 +61,14 @@
 
         <!-- 4. Late Out / Early Out -->
         <div class="col-lg-3 col-md-4 col-sm-6">
-          <div class="card4 shadow-sm text-center p-3">
+          <div class="card shadow-sm text-center p-3 card-color-4">
             <div class="card-body">
-              <i class="bi bi-clock icon text-danger"></i>
-              <h6>Late Out / Early Out</h6>
+              <i class="bi bi-clock icon"></i>
+              <h6>Late Out / Early In</h6>
               <div class="d-flex justify-content-center align-items-center mt-2">
-                <h4 class="text-danger me-2">{{ record.late_out }}</h4>
+                <h4 class="me-2">{{ record.late_out if record.late_out is not none else '--' }}</h4>
                 <span class="fs-4">/</span>
-                <h4 class="text-info ms-2">{{ record.early_out }}</h4>
+                <h4 class="ms-2">{{ record.early_in if record.early_in is not none else '--' }}</h4>
               </div>
             </div>
           </div>
@@ -76,83 +76,73 @@
 
         <!-- 5. EL on Hands -->
         <div class="col-lg-3 col-md-4 col-sm-6">
-          <div class="card5 shadow-sm text-center p-3">
+          <div class="card shadow-sm text-center p-3 card-color-5">
             <div class="card-body">
-              <i class="bi bi-briefcase-fill icon text-success"></i>
+              <i class="bi bi-briefcase-fill icon"></i>
               <h6>EL on Hands</h6>
-              <h4 class="text-success">{{ record.el_on_hands }}</h4>
+              <h4>{{ record.el_on_hands if record.el_on_hands is not none else '--' }}</h4>
             </div>
           </div>
         </div>
 
         <!-- 6. Avg Coming Time -->
         <div class="col-lg-3 col-md-4 col-sm-6">
-          <div class="card6 shadow-sm text-center p-3">
+          <div class="card shadow-sm text-center p-3 card-color-6">
             <div class="card-body">
-              <i class="bi bi-alarm icon text-primary"></i>
+              <i class="bi bi-alarm icon"></i>
               <h6>Avg Coming Time</h6>
-              <h4 class="text-primary">{{ record.avg_counting_time }}</h4>
+              <h4>{{ record.avg_counting_time if record.avg_counting_time is not none else '--' }}</h4>
             </div>
           </div>
         </div>
 
         <!-- 7. Out Time -->
         <div class="col-lg-3 col-md-4 col-sm-6">
-          <div class="card7 shadow-sm text-center p-3">
+          <div class="card shadow-sm text-center p-3 card-color-7">
             <div class="card-body">
-              <i class="bi bi-clock-fill icon text-primary"></i>
+              <i class="bi bi-clock-fill icon"></i>
               <h6>Out Time</h6>
-              <h4 class="text-primary">{{ record.avg_out_time }}</h4>
+              <h4>{{ record.avg_out_time if record.avg_out_time is not none else '--' }}</h4>
             </div>
           </div>
         </div>
 
         <!-- 8. CL on Hands -->
         <div class="col-lg-3 col-md-4 col-sm-6">
-          <div class="card8 shadow-sm text-center p-3">
+          <div class="card shadow-sm text-center p-3 card-color-8">
             <div class="card-body">
-              <i class="bi bi-briefcase icon text-success"></i>
+              <i class="bi bi-briefcase icon"></i>
               <h6>CL on Hands</h6>
-              <h4 class="text-success">{{ record.cl_on_hands }}</h4>
+              <h4>{{ record.cl_on_hands if record.cl_on_hands is not none else '--' }}</h4>
             </div>
           </div>
         </div>
 
+      {% else %}
+        <!-- If no records exist, show default cards with '--' -->
+        {% for i in range(8) %}
+        <div class="col-lg-3 col-md-4 col-sm-6">
+          <div class="card shadow-sm text-center p-3 card-color-{{ i+1 }}">
+            <div class="card-body">
+              <i class="bi bi-dash-circle icon"></i>
+              <h6>--</h6>
+              <h4>--</h4>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
       {% endfor %}
     </div>
-    
-    <br>
 
     <hr class="my-4">
-
-  <!-- Charts Section -->
-  <div class="row g-4">
-    <div class="col-12">
-      <div class="card shadow-sm p-3">
-        <div class="card-body">
-          <h5 class="card-title text-center">Monthly Attendance Overview</h5>
-
-          <!-- Year Selector -->
-          <div class="d-flex justify-content-end mb-2">
-            <label for="yearSelect" class="me-2">Select Year:</label>
-            <select id="yearSelect" class="form-select w-auto">
-              <option value="2024" selected>2024</option>
-              <option value="2023">2023</option>
-              <option value="2022">2022</option>
-            </select>
-          </div>
-
-          <!-- Main Bar Chart -->
-          <canvas id="attendanceChart" height="100"></canvas>
-
-          <!-- Last 3 Months Ratio Chart -->
-          <h6 class="mt-4 text-center">Last 3 Months Ratio</h6>
-          <canvas id="ratioChart" height="60"></canvas>
-        </div>
+    <!-- Charts Section -->
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card p-3">
+          <canvas id="attendenceChart"></canvas>
+      </div>
       </div>
     </div>
-  </div>
-
   </div>
   {% include 'footer.html' %}
 </body>

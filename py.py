@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, jsonify, render_template, request, redirect, url_for
 import mysql.connector
 from flask_cors import CORS
 
@@ -15,17 +15,55 @@ db_config = {
     'database': 'nha'
 }
 
+def get_db_connection():
+    conn = mysql.connector.connect(
+        host=db_config['host'],
+        user=db_config['user'],
+        password=db_config['password'],
+        database=db_config['database']
+    )
+    return conn
+
 # Root -> redirect to form
 @app.route('/')
 def home():
     return redirect(url_for('card_screen'))
+
+# route chart type
+@app.route('/chart-data/form')
+def chart_data_form():
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    # Fetch early_in and early_out from 'form' table
+    cursor.execute("SELECT early_in, early_out FROM form")
+    rows = cursor.fetchall()
+
+    labels = [str(row[0]) for row in rows]           # early_in -> X-axis
+    data_values = [float(row[1]) for row in rows]    # early_out -> Y-axis
+
+    data = {
+        "labels": labels,
+        "datasets": [
+            {
+                "label": "Early Out vs Early In",
+                "data": data_values,
+                "backgroundColor": "rgba(54, 162, 235, 0.6)",
+                "borderColor": "rgba(54, 162, 235, 1)",
+                "borderWidth": 1
+            }
+        ]
+    }
+
+    cursor.close()
+    conn.close()
+    return jsonify(data) 
 
 # FORM PAGE
 @app.route('/form', methods=['GET', 'POST'])
 def form():
     error = None
     success = None
-
     # Fetch existing records
     try:
         conn = mysql.connector.connect(**db_config)
